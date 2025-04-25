@@ -1,9 +1,13 @@
-import React, { useMemo } from 'react';
-import { Card, Tag, Typography, Tooltip } from 'antd';
-import { InfoCircleOutlined, HeartOutlined } from '@ant-design/icons';
-import dayjs from 'dayjs';
-import { IData_SnippetNews, IData_TagItem, IData_TrafficItem } from '../../types/news.types';
-import './NewsComponent.scss';
+import React, { useMemo } from "react";
+import { Card, Tag, Typography } from "antd";
+import { InfoCircleOutlined, HeartOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
+import {
+  IData_SnippetNews,
+  IData_TagItem,
+  IData_TrafficItem,
+} from "../../types/news.types";
+import "./NewsComponent.scss";
 
 interface NewsComponentProps {
   news: IData_SnippetNews;
@@ -12,7 +16,7 @@ interface NewsComponentProps {
 const NewsComponent: React.FC<NewsComponentProps> = ({ news }) => {
   // Format date to "DD Mon YYYY" format
   const formattedDate = useMemo(() => {
-    return dayjs(news.DP).format('DD MMM YYYY');
+    return dayjs(news.DP).format("DD MMM YYYY");
   }, [news.DP]);
 
   // Calculate total reach
@@ -37,18 +41,18 @@ const NewsComponent: React.FC<NewsComponentProps> = ({ news }) => {
   // Render highlighted text
   const renderHighlightedText = (text: string) => {
     if (!text) return null;
-    
+
     // Check if the text has any of the keywords to highlight
     const keywordsToHighlight = news.KW.map((kw: IData_TagItem) => kw.value);
-    
+
     let highlightedText = text;
     keywordsToHighlight.forEach((keyword: string) => {
-      const regex = new RegExp(`\\b(${keyword})\\b`, 'gi');
-      highlightedText = highlightedText.replace(regex, match => {
+      const regex = new RegExp(`\\b(${keyword})\\b`, "gi");
+      highlightedText = highlightedText.replace(regex, (match) => {
         return `<span class="highlighted-keyword">${match}</span>`;
       });
     });
-    
+
     return <div dangerouslySetInnerHTML={{ __html: highlightedText }} />;
   };
 
@@ -60,7 +64,7 @@ const NewsComponent: React.FC<NewsComponentProps> = ({ news }) => {
         {trafficData.map((item, index) => (
           <span key={item.country} className="traffic-item">
             {item.country} {item.percentage}
-            {index < trafficData.length - 1 && ' '}
+            {index < trafficData.length - 1 && " "}
           </span>
         ))}
       </div>
@@ -76,29 +80,32 @@ const NewsComponent: React.FC<NewsComponentProps> = ({ news }) => {
             <span className="news-reach">{reachValue} Reach</span>
             {renderTraffic()}
           </div>
-          
+
           <Typography.Title level={3} className="news-title">
             {news.TI}
           </Typography.Title>
-          
+
           <div className="news-source">
             <span className="source-icon"></span>
-            <a href={news.URL} className="source-domain">{news.DOM}</a>
+            <a href={news.URL} className="source-domain">
+              {news.DOM}
+            </a>
             <span className="source-country">{news.CNTR}</span>
             <span className="source-language">En</span>
-            <span className="source-authors">{news.AU.join(', ')}</span>
+            <span className="source-authors">{news.AU.join(", ")}</span>
           </div>
         </div>
-        
+
         <div className="news-content">
-          {news.HIGHLIGHTS && news.HIGHLIGHTS.map((highlight, index) => (
-            <div key={index} className="news-snippet">
-              {renderHighlightedText(highlight)}
-            </div>
-          ))}
+          {news.HIGHLIGHTS &&
+            news.HIGHLIGHTS.map((highlight, index) => (
+              <div key={index} className="news-snippet">
+                {renderHighlightedText(highlight)}
+              </div>
+            ))}
           <div className="news-show-more">Show more</div>
         </div>
-        
+
         <div className="news-footer">
           <div className="tags-section">
             {news.KW.map((tag: IData_TagItem) => (
@@ -107,7 +114,7 @@ const NewsComponent: React.FC<NewsComponentProps> = ({ news }) => {
               </Tag>
             ))}
           </div>
-          
+
           <div className="actions-section">
             <InfoCircleOutlined className="action-icon" />
             <HeartOutlined className="action-icon" />
@@ -118,4 +125,4 @@ const NewsComponent: React.FC<NewsComponentProps> = ({ news }) => {
   );
 };
 
-export default React.memo(NewsComponent); 
+export default React.memo(NewsComponent);
