@@ -1,0 +1,193 @@
+.news-card-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  .news-card {
+    background-color: #1e1e2f;
+    color: #fff;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    
+    .ant-card-body {
+      padding: 16px;
+    }
+  }
+  
+  .news-header {
+    margin-bottom: 16px;
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #ababab;
+      
+      .news-date {
+        margin-right: 16px;
+      }
+      
+      .news-reach {
+        margin-right: 16px;
+      }
+      
+      .traffic-section {
+        display: flex;
+        
+        .traffic-title {
+          margin-right: 5px;
+        }
+        
+        .traffic-item {
+          margin-right: 5px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    
+    .news-title {
+      font-size: 22px !important;
+      margin: 0 0 10px 0 !important;
+      color: #fff !important;
+      font-weight: 500 !important;
+    }
+    
+    .news-source {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #ababab;
+      
+      .source-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #fff;
+        margin-right: 8px;
+        display: inline-block;
+      }
+      
+      .source-domain {
+        color: #4d9cff;
+        margin-right: 16px;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+      .source-country {
+        margin-right: 16px;
+        
+        &::before {
+          content: '🇦🇹';
+          margin-right: 4px;
+        }
+      }
+      
+      .source-language {
+        margin-right: 16px;
+        
+        &::before {
+          content: '📄';
+          margin-right: 4px;
+        }
+      }
+      
+      .source-authors {
+        &::before {
+          content: '👤';
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+  
+  .news-content {
+    margin-bottom: 16px;
+    color: #e1e1e1;
+    
+    .news-snippet {
+      margin-bottom: 8px;
+      line-height: 1.5;
+      font-size: 15px;
+      
+      .highlighted-keyword {
+        background-color: rgba(77, 156, 255, 0.2);
+        color: #4d9cff;
+        border-radius: 2px;
+        padding: 0 2px;
+      }
+    }
+    
+    .news-show-more {
+      color: #4d9cff;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      
+      &::after {
+        content: '▼';
+        font-size: 10px;
+        margin-left: 5px;
+      }
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .news-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .tags-section {
+      display: flex;
+      flex-wrap: wrap;
+      
+      .news-tag {
+        background-color: rgba(77, 156, 255, 0.1);
+        color: #4d9cff;
+        border: 1px solid rgba(77, 156, 255, 0.3);
+        margin-right: 8px;
+        margin-bottom: 8px;
+        
+        .tag-count {
+          margin-left: 4px;
+          opacity: 0.7;
+        }
+      }
+    }
+    
+    .actions-section {
+      display: flex;
+      
+      .action-icon {
+        font-size: 18px;
+        color: #ababab;
+        margin-left: 16px;
+        cursor: pointer;
+        
+        &:hover {
+          color: #4d9cff;
+        }
+      }
+    }
+  }
+}
+
+// Override antd styles
+.ant-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.ant-card {
+  background-color: #1e1e2f;
+  color: #fff;
+} 
